@@ -3,7 +3,7 @@ public class Book extends Main implements Borrowable{
 
     private String title;
     private String author;
-    private String isbn;
+    private String isbn; 
     private String publisher;
     private int numOfCopies;
     private Status status;
@@ -69,25 +69,49 @@ public class Book extends Main implements Borrowable{
         return numOfCopies;
     }
 
+    public void setStatus(Status status) {
+        this.status = status;
+    }
+
+    public Status getStatus() {
+        return status;
+    }
+
     // Borrow Book:
     @Override
-    public void borrowBook(Book book, int numOfCopies) {
-        if (numOfCopies == 0) {
-            System.out.println("We do not have enough of this book to fulfil your request. Please try again!");
-        } else if  (book.getNumOfCopies() < 0){
-            System.out.println("Sorry! We do not currently have the book you are looking for.");
-        } else if (book.getNumOfCopies() - numOfCopies < 0) {
-            System.out.println("Sorry! We currently have" + book.getNumOfCopies() + " copies of " + book.getTitle() + "with us today!");
-        } else if (book.getNumOfCopies() - numOfCopies >= 0 ) {
+    public synchronized void borrowBook(Book book, int numOfCopies) {
+        try {
+            if (book == null) {
+                throw new IllegalArgumentException("Book cannot be null.");
+            }
+            if (numOfCopies < 1) {
+                throw new IllegalArgumentException("Number of copies must be positive.");
+            }
+            if (book.getNumOfCopies() < numOfCopies) {
+                throw new IllegalArgumentException("Not enough copies available to borrow.");
+            }
             book.setNumOfCopies(book.getNumOfCopies() - numOfCopies);
             System.out.println("Your book(s) have successfully been borrowed, we hope to see you again!");
+        } catch (Exception e) {
+            System.out.println("Error borrowing book: " + e.getMessage());
         }
     }
 
     // Return Book:
     @Override
-    public void returnBook(Book book, int numOfCopies) {
-        book.setNumOfCopies(book.getNumOfCopies() + numOfCopies);
+    public synchronized void returnBook(Book book, int numOfCopies) {
+        try {
+            if (book == null) {
+                throw new IllegalArgumentException("Book cannot be null.");
+            }
+            if (numOfCopies < 1) {
+                throw new IllegalArgumentException("Number of copies must be positive.");
+            }
+            book.setNumOfCopies(book.getNumOfCopies() + numOfCopies);
+            System.out.println("Your book(s) have successfully been returned.");
+        } catch (Exception e) {
+            System.out.println("Error returning book: " + e.getMessage());
+        }
     }
-
 }
+
