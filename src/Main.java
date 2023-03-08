@@ -9,64 +9,77 @@ import java.util.Scanner;
 
 public class Main {
     private static ArrayList<Book> books;
+    public static ArrayList<Author> authors = new ArrayList<>();
+
     private static Library library;
 
     public static void main(String[] args) {
 
-        Status available = Status.AVAILABLE;
-        Status checkedOut = Status.CHECKED_OUT;
-        Status overdue = Status.OVERDUE;
+        // Status available = Status.AVAILABLE;
+        // Status checkedOut = Status.CHECKED_OUT;
+        // Status overdue = Status.OVERDUE;
         books = new ArrayList<>();
         library = new Library();
 
-        // Add Authors
-        Author author1 = new Author("RICHARD_ADAMS", new Date(1920, 05, 9), new String[]{"WATERSHIP_DOWN", "THE_PLAGUE_DOGS", "SHARDIK"});
-        Author author2 = new Author("GEORGE_ORWELL", new Date(1903, 06, 25), new String[]{"NINETEEN_EIGHTY-FOUR", "ANIMAL_FARM"});
-        Author author3 = new Author("RAY_BRADBURY", new Date(1920, 08, 22), new String[]{"FARENHEIT_451", "THE_MARTIAN_CHRONICLES"});
-        Author author4 = new Author("STEPHEN_KING", new Date(1947, 09, 21), new String[]{"THE_MIST", "UNDER_THE_DOME"});
-        Author author5 = new Author("UPTON_SINCLAIR", new Date(1878, 09, 20), new String[]{"THE_JUNGLE"});
+        // // Add Authors
+        // Author author1 = new Author("RICHARD_ADAMS", new Date(1920, 05, 9), new String[]{"WATERSHIP_DOWN", "THE_PLAGUE_DOGS", "SHARDIK"});
+        // library.addAuthor(author1);
 
-        Main.addAuthor(author1);
-        Main.addAuthor(author2);
-        Main.addAuthor(author3);
-        Main.addAuthor(author4);
-        Main.addAuthor(author5);
+        // Author author2 = new Author("GEORGE_ORWELL", new Date(1903, 06, 25), new String[]{"NINETEEN_EIGHTY-FOUR", "ANIMAL_FARM"});
+        // library.addAuthor(author2);
 
-        // Add Books
-        Book book1 = new Book("WATERSHIP_DOWN","RICHARD_ADAMS", 	"0901720313","REX_COLLINGS",1, overdue);
-        Book book2 = new Book("THE_PLAGUE_DOGS","RICHARD_ADAMS", "9780713910551","ALLAN_LANE",2, checkedOut);
-        Book book3 = new Book("NINETEEN_EIGHTY-FOUR", "GEORGE_ORWELL","9780451524935", "SECKER_&_WARBURG", 3, overdue);
-        Book book4 = new Book("ANIMAL_FARM", "GEORGE_ORWELL", "9789356569058", "SECKER_&_WARBURG", 4, available);
-        Book book5 = new Book("FARENHEIT_451", "RAY_BRADBURY","9780743247221", "SIMON_&_SCHUSTER", 5, available);
-        Book book6 = new Book("THE_MARTIAN_CHRONICLES", "RAY_BRADBURY", "0553229680", "DOUBLEDAY", 6, available);
-        Book book7 = new Book("THE_MIST", "STEPHEN_KING", "9780451223296", "VIKING_PRESS", 7, available);
-        Book book8 = new Book("UNDER_THE_DOME", "STEPHEN_KING", "9781439148501", "SCRIBNER", 8, available);
-        Book book9 = new Book("THE_JUNGLE", "UPTON_SINCLAIR", "9781503331860", "RANDOM_HOUSE", 9, available);
-        Book book10 = new Book("SHARDIK", "RICHARD_ADAMS", "0380509970", "ALLEN_LANE", 10, checkedOut);
+        // Author author3 = new Author("RAY_BRADBURY", new Date(1920, 08, 22), new String[]{"FARENHEIT_451", "THE_MARTIAN_CHRONICLES"});
+        // library.addAuthor(author3);
 
-        Main.addBook(book1);
-        Main.addBook(book2);
-        Main.addBook(book3);
-        Main.addBook(book4);
-        Main.addBook(book5);
-        Main.addBook(book6);
-        Main.addBook(book7);
-        Main.addBook(book8);
-        Main.addBook(book9);
-        Main.addBook(book10);
+        // Author author4 = new Author("STEPHEN_KING", new Date(1947, 09, 21), new String[]{"THE_MIST", "UNDER_THE_DOME"});
+        // library.addAuthor(author4);
 
-        // Add patrons
-        Patron patron1 = new Patron("James Kirk", "42 Canada Drive", "(709)123-4567",null);
-        Patron patron2 = new Patron("Mr. Spock", "1 First Street", "(709)891-2345", null);
-        Patron patron3 = new Patron("Leonard McCoy", "435 Meowmeow Crescent", "(709)678-9123", null);
-        Patron patron4 = new Patron("Nyota Uhura", "6 Bunny Boulevard", "(709)456-7891", null);
-        Patron patron5 = new Patron("Montgomery Scott", "37 Fishbone Parkway", "(709)234-5678", null);
+        // Author author5 = new Author("UPTON_SINCLAIR", new Date(1878, 09, 20), new String[]{"THE_JUNGLE"});
+        // library.addAuthor(author5);
 
-        library.addPatron(patron1);
-        library.addPatron(patron2);
-        library.addPatron(patron3);
-        library.addPatron(patron4);
-        library.addPatron(patron5);
+        // // Add Books
+        // Book book1 = new Book("WATERSHIP_DOWN","RICHARD_ADAMS", 	"0901720313","REX_COLLINGS",1, overdue);
+        // library.addBook(book1);
+
+        // Book book2 = new Book("THE_PLAGUE_DOGS","RICHARD_ADAMS", "9780713910551","ALLAN_LANE",2, checkedOut);
+        // library.addBook(book2);
+
+        // Book book3 = new Book("NINETEEN_EIGHTY-FOUR", "GEORGE_ORWELL","9780451524935", "SECKER_&_WARBURG", 3, overdue);
+        // library.addBook(book3);
+
+        // Book book4 = new Book("ANIMAL_FARM", "GEORGE_ORWELL", "9789356569058", "SECKER_&_WARBURG", 4, available);
+        // library.addBook(book4);
+
+        // Book book5 = new Book("FARENHEIT_451", "RAY_BRADBURY","9780743247221", "SIMON_&_SCHUSTER", 5, available);
+        // library.addBook(book5);
+
+        // Book book6 = new Book("THE_MARTIAN_CHRONICLES", "RAY_BRADBURY", "0553229680", "DOUBLEDAY", 6, available);
+        // library.addBook(book6);
+
+        // Book book7 = new Book("THE_MIST", "STEPHEN_KING", "9780451223296", "VIKING_PRESS", 7, available);
+        // library.addBook(book7);
+
+        // Book book8 = new Book("UNDER_THE_DOME", "STEPHEN_KING", "9781439148501", "SCRIBNER", 8, available);
+        // library.addBook(book8);
+
+        // Book book9 = new Book("THE_JUNGLE", "UPTON_SINCLAIR", "9781503331860", "RANDOM_HOUSE", 9, available);
+        // library.addBook(book9);
+
+        // Book book10 = new Book("SHARDIK", "RICHARD_ADAMS", "0380509970", "ALLEN_LANE", 10, checkedOut);
+        // library.addBook(book10);
+
+        // // Add patrons
+        // Patron patron1 = new Patron("James Kirk", "42 Canada Drive", "(709)123-4567",null);
+        // Patron patron2 = new Patron("Mr. Spock", "1 First Street", "(709)891-2345", null);
+        // Patron patron3 = new Patron("Leonard McCoy", "435 Meowmeow Crescent", "(709)678-9123", null);
+        // Patron patron4 = new Patron("Nyota Uhura", "6 Bunny Boulevard", "(709)456-7891", null);
+        // Patron patron5 = new Patron("Montgomery Scott", "37 Fishbone Parkway", "(709)234-5678", null);
+
+        // library.addPatron(patron1);
+        // library.addPatron(patron2);
+        // library.addPatron(patron3);
+        // library.addPatron(patron4);
+        // library.addPatron(patron5);
 
         System.out.println("\nWelcome to our Library!");
         promptUser();
@@ -288,12 +301,75 @@ public class Main {
 
     // Case 5 - EDIT AUTHOR
     private static void editAuthor() {
-
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter the name of the author you want to edit:");
+        String authorName = scanner.nextLine();
+    
+        boolean authorFound = false;
+    
+        for (int i = 0; i < authors.size(); i++) {
+            if (authors.get(i).getAuthorName().equals(authorName)) {
+                authorFound = true;
+                System.out.println("What do you want to edit?");
+                System.out.println("1. Name");
+                System.out.println("2. Date of birth");
+                System.out.println("3. Notable works");
+                System.out.print("Enter your choice: ");
+    
+                int choice = scanner.nextInt();
+                scanner.nextLine();
+    
+                switch (choice) {
+                    case 1:
+                        System.out.print("Enter the new name: ");
+                        String newName = scanner.nextLine();
+                        authors.get(i).setAuthorName(newName);
+                        break;
+                    case 2:
+                        System.out.print("Enter the new date of birth (YYYY-MM-DD): ");
+                        String dobStr = scanner.nextLine();
+                        Date newDob = Date.valueOf(dobStr);
+                        authors.get(i).setDateOfBirth(newDob);
+                        break;
+                    case 3:
+                        System.out.print("Enter the new notable works (separated by commas): ");
+                        String[] newWorks = scanner.nextLine().split(",");
+                        authors.get(i).booksWritten = newWorks;
+                        break;
+                    default:
+                        System.out.println("Invalid choice.");
+                        break;
+                }
+                System.out.println("Author updated successfully.");
+                break;
+            }
+        }
+    
+        if (!authorFound) {
+            System.out.println("Author not found in the library."); 
+        }
     }
+    
 
     // Case 6 - DELETE AUTHOR
     private static void deleteAuthor() {
-
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter the name of the author you want to delete:");
+        String authorName = scanner.nextLine();
+    
+        boolean authorDeleted = false;
+    
+        for (int i = 0; i < authors.size(); i++) {
+            if (authors.get(i).getAuthorName().equals(authorName)) {
+                authors.remove(i);
+                authorDeleted = true;
+                break;
+            }
+        }
+    
+        if (!authorDeleted) {
+            System.out.println("Author not found in the library."); 
+        }
     }
 
     // Case 7 - PRINT ALL BOOKS
